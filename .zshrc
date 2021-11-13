@@ -59,7 +59,12 @@ if [ $UID = 0 ]; then
     SAVEHIST=0
 fi
 
-alias vz='vim ~/.zsh/.zshrc'
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/asaka/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/asaka/google-cloud-sdk/path.zsh.inc'; fi
 
-if ! command -v nvm 1>/dev/null 2>&1; then [ -s $NVM_DIR/nvm.sh ] && . $NVM_DIR/nvm.sh; fi
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/asaka/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/asaka/google-cloud-sdk/completion.zsh.inc'; fi
+
+if command -v vim 1>/dev/null 2>&1; then eval "alias vz='vim ~/.zsh/.zshrc'"; fi
+if command -v brew 1>/dev/null 2>&1; then eval "alias brew=\"PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew\""; fi
 
